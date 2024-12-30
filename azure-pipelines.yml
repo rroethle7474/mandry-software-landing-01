@@ -24,7 +24,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/mandry-landing/build'
+    SourceFolder: '$(System.DefaultWorkingDirectory)/mandry-landing/dist'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy Build Output'
