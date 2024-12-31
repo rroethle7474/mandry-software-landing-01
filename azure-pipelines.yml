@@ -22,12 +22,13 @@ steps:
   displayName: 'npm install and build'
   workingDirectory: $(System.DefaultWorkingDirectory)
 
-- task: CopyFiles@2
+- task: ArchiveFiles@2
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/mandry-landing/dist'
-    Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copy Build Output'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/mandry-landing/dist'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:
