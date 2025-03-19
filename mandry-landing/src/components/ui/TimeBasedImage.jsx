@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useTimeOfDay } from '../../hooks/useTimeOfDay';
+import { useTimeOfDay } from '../../hooks/timeUtils.js';
 import { Loader } from 'lucide-react';
 
 const TimeBasedImage = ({ 
@@ -14,14 +14,12 @@ const TimeBasedImage = ({
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log('TimeBasedImage mounted, currentPeriod:', currentPeriod);
     if (currentPeriod) {
       setIsImageLoading(true);
     }
   }, [currentPeriod]);
 
   if (!currentPeriod) {
-    console.log('No current period, showing loading state');
     return (
       <div className={`relative ${className}`}>
         <div className="absolute inset-0 bg-gray-800 animate-pulse"></div>

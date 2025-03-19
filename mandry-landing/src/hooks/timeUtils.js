@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import { set } from 'date-fns';
+import { TimeOverrideContext } from '../contexts/TimeContext.js';
 
 export const TIME_PERIODS = {
   MORNING: 'morning',
@@ -8,13 +9,20 @@ export const TIME_PERIODS = {
   NIGHT: 'night'
 };
 
+export function useTimeOverride() {
+  return useContext(TimeOverrideContext);
+}
+
 export function useTimeOfDay() {
   const [currentPeriod, setCurrentPeriod] = useState(null);
   const [nextTransition, setNextTransition] = useState(null);
+  const { overrideHour } = useTimeOverride();
 
-  const determineTimePeriod = (date) => {
-    const hour = date.getHours();
-    console.log('Current hour:', hour);
+  // Use useCallback to memoize these functions
+  const determineTimePeriod = useCallback((date) => {
+    // Use overrideHour if available, otherwise use the current hour
+    const hour = overrideHour !== null ? overrideHour : date.getHours();
+    console.log('Current hour:', hour, overrideHour !== null ? '(overridden)' : '');
     
     // Define time ranges
     if (hour >= 4 && hour < 12) {
@@ -26,10 +34,11 @@ export function useTimeOfDay() {
     } else {
       return TIME_PERIODS.NIGHT;
     }
-  };
+  }, [overrideHour]);
 
-  const calculateNextTransition = (currentDate) => {
-    const hour = currentDate.getHours();
+  const calculateNextTransition = useCallback((currentDate) => {
+    // Use overrideHour if available, otherwise use the current hour
+    const hour = overrideHour !== null ? overrideHour : currentDate.getHours();
     let nextHour;
 
     if (hour >= 4 && hour < 12) {
@@ -56,7 +65,7 @@ export function useTimeOfDay() {
     }
 
     return nextTransitionDate;
-  };
+  }, [overrideHour]);
 
   useEffect(() => {
     const updateTimeOfDay = () => {
@@ -67,6 +76,11 @@ export function useTimeOfDay() {
       setCurrentPeriod(period);
       setNextTransition(nextTransitionTime);
 
+      // If there's an override, don't schedule an update
+      if (overrideHour !== null) {
+        return null;
+      }
+
       // Schedule next update
       const timeUntilTransition = nextTransitionTime - now;
       return setTimeout(updateTimeOfDay, timeUntilTransition);
@@ -74,12 +88,14 @@ export function useTimeOfDay() {
 
     const timeoutId = updateTimeOfDay();
 
-    return () => clearTimeout(timeoutId);
-  }, []);
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [overrideHour, determineTimePeriod, calculateNextTransition]);
 
   return {
     currentPeriod,
     nextTransition,
     isLoading: currentPeriod === null
   };
-}
+} 
