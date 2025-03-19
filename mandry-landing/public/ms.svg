@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    .m { font-size: 60px; font-weight: bold; fill: #646cff; font-family: sans-serif;}
+    .s { font-size: 60px; font-weight: bold; fill: #535bf2; font-family: sans-serif;}
+  </style>
+  <text x="10" y="70" class="m">M</text>
+  <text x="50" y="70" class="s">S</text>
+</svg>
