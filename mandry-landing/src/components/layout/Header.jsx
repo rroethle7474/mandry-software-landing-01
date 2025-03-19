@@ -26,28 +26,20 @@ const Header = () => {
               </button>
               <div className="absolute left-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg overflow-hidden z-20 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 origin-top transition-all duration-200 ease-in-out">
                 <a 
-                  href="https://example.com/team" 
+                  href="https://www.linkedin.com/in/ryan-roethle-64293947/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700"
                 >
-                  Our Team
+                  LinkedIn
                 </a>
                 <a 
-                  href="https://example.com/story" 
+                  href="https://github.com/rroethle7474" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700"
                 >
-                  Our Story
-                </a>
-                <a 
-                  href="https://example.com/values" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700"
-                >
-                  Our Values
+                  GitHub
                 </a>
               </div>
             </div>
@@ -60,28 +52,28 @@ const Header = () => {
               </button>
               <div className="absolute left-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg overflow-hidden z-20 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 origin-top transition-all duration-200 ease-in-out">
                 <a 
-                  href="https://example.com/webapp" 
+                  href="https://www.dopaminedetoxtoday.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700"
                 >
-                  Web Applications
+                  Social Media Detox App
                 </a>
                 <a 
-                  href="https://example.com/mobile" 
+                  href="https://www.sillymonkeygifts.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700"
                 >
-                  Mobile Apps
+                  Gift Organizer App
                 </a>
                 <a 
-                  href="https://example.com/enterprise" 
+                  href="https://www.jclleague.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700"
                 >
-                  Enterprise Solutions
+                  Football Predictions App
                 </a>
               </div>
             </div>
