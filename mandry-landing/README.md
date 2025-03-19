@@ -1,8 +1,9 @@
 # Mandry Landing Page
 
 ## Overview
-[Your project description here] - This is a modern landing page built with React and Vite, featuring a responsive design with Tailwind CSS.
-https://mandry.software
+This is a modern landing page.
+
+Prod Link: https://mandry.software
 
 ## Technologies Used
 
@@ -12,6 +13,44 @@ https://mandry.software
 - **Headless UI**: Unstyled UI components for React
 - **Lucide React**: Beautiful & consistent icon toolkit
 - **date-fns**: JavaScript date utility library
+
+## Time-Based Features
+
+The landing page implements dynamic time-based content that changes according to the time of day:
+
+### Time Periods
+
+The application recognizes four distinct time periods:
+
+- **Morning** (4:00 AM - 11:59 AM): Bright, energetic visuals
+- **Midday** (12:00 PM - 4:59 PM): Productive, focused atmosphere
+- **Evening** (5:00 PM - 7:59 PM): Warm, winding-down visuals
+- **Night** (8:00 PM - 3:59 AM): Calm, restful ambiance
+
+### Dynamic Content
+
+The following elements adjust automatically based on the current time period:
+
+- **Hero Background**: The main hero image changes to reflect the time of day
+- **Logo**: The logo subtly transforms to match the current time period
+- **Visual Atmosphere**: Colors and imagery adapt to match the time-appropriate mood
+
+### Time Override Slider
+
+A custom time slider in the footer allows visitors to explore the site at different times of day:
+
+- **Interactive Control**: Visitors can manually override the time to view different versions of the site
+- **Real-time Updates**: Visuals update instantly when adjusting the slider without page refresh
+- **Time Indicators**: Labels and icons provide feedback about the selected time period
+- **Reset Functionality**: One-click reset returns to the current actual time
+
+### Implementation Details
+
+- **Context API**: Uses React Context for global time state management
+- **Custom Hooks**: The `useTimeOfDay` hook manages time detection and transitions
+- **Time Calculations**: Automatic detection of current time period with date-fns
+- **Programmatic Transitions**: Scheduled updates for time period changes
+- **Image Optimization**: Time-specific images with WebP format support
 
 ## Project Structure
 
@@ -68,7 +107,7 @@ npm run dev
 yarn dev
 ```
 
-This will launch the application at [http://localhost:5173](http://localhost:5173)
+This will launch the application at [http://localhost:5173]
 
 ### Building for Production
 
@@ -116,11 +155,3 @@ The build pipeline includes:
 - Code splitting for optimal loading
 - Asset compression (gzip and brotli)
 - CSS optimization with Tailwind's JIT compiler
-
-## Contributing
-
-[Add your contribution guidelines here]
-
-## License
-
-[Add your license information here]
